@@ -4,11 +4,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(CameraPointer))]
 public class GazeController : MonoBehaviour {
-
     private Animator gazeAnimator;
+    private CameraPointer cameraPointer;
     [HideInInspector]
     public bool gazeHover;
-    private CameraPointer cameraPointer;
 
     private void Start() {
         gazeAnimator = GetComponent<Animator>();

@@ -16,9 +16,9 @@ public class GazeController : MonoBehaviour {
     }
 
     virtual public void GazeHoverOnEnter() {
+        gazeAnimator.SetBool("HoverLeave", false);
         gazeAnimator.Play("GazeHoverEnter");
         gazeHover = true;
-        gazeAnimator.SetBool("HoverLeave", false);
         StartCoroutine("StartHoverTimer");
     }
 

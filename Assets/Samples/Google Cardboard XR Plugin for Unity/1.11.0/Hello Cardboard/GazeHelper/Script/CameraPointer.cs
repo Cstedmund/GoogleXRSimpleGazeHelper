@@ -26,6 +26,7 @@ public class CameraPointer : MonoBehaviour {
     private const float _maxDistance = 10;
     private GameObject _gazedAtObject = null;
     private GazeController _gazeController;
+
     [SerializeField]
     private string interactableObjectTag;
 
@@ -44,30 +45,33 @@ public class CameraPointer : MonoBehaviour {
         // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
         // at.
         RaycastHit hit;
-        Debug.DrawRay(transform.position,transform.forward * _maxDistance,Color.green);
-        if(Physics.Raycast(transform.position,transform.forward,out hit,_maxDistance)) {
+        Debug.DrawRay(transform.position, transform.forward * _maxDistance, Color.green);
+        if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistance)) {
             // GameObject detected in front of the camera.
-            if(_gazedAtObject != hit.transform.gameObject && hit.transform.gameObject.tag == interactableObjectTag) {
+            if (_gazedAtObject != hit.transform.gameObject) {
                 // New GameObject.
                 _gazedAtObject?.SendMessage("OnPointerExit");
                 _gazedAtObject = hit.transform.gameObject;
-                _gazedAtObject.SendMessage("OnPointerEnter");
-
-                _gazeController.SendMessage("GazeHoverOnEnter");
-            } else if(_gazedAtObject != hit.transform.gameObject && hit.transform.gameObject.tag != interactableObjectTag) {
+                if (hit.transform.gameObject.tag == interactableObjectTag) {
+                    _gazedAtObject.SendMessage("OnPointerEnter");
+                    _gazeController.SendMessage("GazeHoverOnEnter");
+                } else {
+                    _gazeController.SendMessage("GazeOnLeave");
+                }
             }
         } else {
             // No GameObject detected in front of the camera.
-            if(_gazedAtObject != null && _gazedAtObject.tag == interactableObjectTag) {
-                _gazedAtObject?.SendMessage("OnPointerExit");
-                _gazedAtObject = null;
+            _gazedAtObject?.SendMessage("OnPointerExit");
+            if (_gazedAtObject != null) {
                 _gazeController.SendMessage("GazeOnLeave");
             }
+            _gazedAtObject = null;
+
         }
 
         // Checks for screen touches.
-        if(Google.XR.Cardboard.Api.IsTriggerPressed || hoverClick) {
-            if(_gazedAtObject.tag == interactableObjectTag) {
+        if (Google.XR.Cardboard.Api.IsTriggerPressed || hoverClick) {
+            if (_gazedAtObject.tag == interactableObjectTag) {
                 _gazedAtObject?.SendMessage("OnPointerClick");
                 hoverClick = false;
             }

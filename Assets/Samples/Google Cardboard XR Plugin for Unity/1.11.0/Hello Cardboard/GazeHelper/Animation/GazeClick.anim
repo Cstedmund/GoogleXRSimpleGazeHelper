@@ -114,7 +114,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5019608
+        value: 0.8
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -132,7 +132,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.8333333
-        value: 0.5019608
+        value: 0.8
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -177,11 +177,14 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -6379982804546595101, guid: 30267e1ffaf9e49d0bb0b944b6abcf40, type: 3}
+      value: {fileID: -6379982804546595101, guid: 30267e1ffaf9e49d0bb0b944b6abcf40,
+        type: 3}
     - time: 0.6666667
-      value: {fileID: -5182978872680815649, guid: 30267e1ffaf9e49d0bb0b944b6abcf40, type: 3}
+      value: {fileID: -5182978872680815649, guid: 30267e1ffaf9e49d0bb0b944b6abcf40,
+        type: 3}
     - time: 0.8333333
-      value: {fileID: 6539525026150653725, guid: 30267e1ffaf9e49d0bb0b944b6abcf40, type: 3}
+      value: {fileID: 6539525026150653725, guid: 30267e1ffaf9e49d0bb0b944b6abcf40,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -350,7 +353,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5019608
+        value: 0.8
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -368,7 +371,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.8333333
-        value: 0.5019608
+        value: 0.8
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -417,7 +420,8 @@ AnimationClip:
   - time: 1
     functionName: GazeOnClick
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 243e24615f001486ca4e5d94145a09a5, type: 3}
+    objectReferenceParameter: {fileID: 11500000, guid: 243e24615f001486ca4e5d94145a09a5,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CameraPointer))]
 public class GazeController : MonoBehaviour {
     private Animator gazeAnimator;
     private CameraPointer cameraPointer;
@@ -16,9 +15,9 @@ public class GazeController : MonoBehaviour {
     }
 
     virtual public void GazeHoverOnEnter() {
-        gazeAnimator.SetBool("HoverLeave", false);
         gazeAnimator.Play("GazeHoverEnter");
         gazeHover = true;
+        gazeAnimator.SetBool("HoverLeave", false);
         StartCoroutine("StartHoverTimer");
     }
 
